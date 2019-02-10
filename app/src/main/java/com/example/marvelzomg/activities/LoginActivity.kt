@@ -1,4 +1,4 @@
-package com.example.marvelzomg
+package com.example.marvelzomg.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import android.content.Intent
 import android.widget.EditText
+import com.example.marvelzomg.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference

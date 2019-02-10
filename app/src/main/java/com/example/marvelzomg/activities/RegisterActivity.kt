@@ -1,4 +1,4 @@
-package com.example.marvelzomg
+package com.example.marvelzomg.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
 import android.content.Intent
+import com.example.marvelzomg.R
 
 
 class RegisterActivity : AppCompatActivity() {

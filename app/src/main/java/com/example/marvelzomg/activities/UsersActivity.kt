@@ -1,8 +1,8 @@
-package com.example.marvelzomg
+package com.example.marvelzomg.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import com.example.marvelzomg.R
 import com.google.firebase.auth.FirebaseAuth
 
 class UsersActivity : AppCompatActivity() {
