@@ -6,29 +6,27 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import com.example.marvelzomg.R
+import com.example.marvelzomg.services.FireBaseService
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 
 class HomeActivity : AppCompatActivity() {
 
-    private var mAuth: FirebaseAuth? = null
     private var usernameTextView: TextView? = null
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         usernameTextView = findViewById(R.id.usernameTextView)
-
-        mAuth = FirebaseAuth.getInstance();
-
     }
 
     public override fun onStart() {
         super.onStart()
-        val currentUser = mAuth!!.getCurrentUser()
-        if (currentUser != null) {
-            usernameTextView!!.text = currentUser.email
+        if (auth.currentUser != null) {
+            usernameTextView!!.text = auth.currentUser!!.email
         } else {
             usernameTextView!!.text = "NOT LOGGED IN :/"
         }
@@ -39,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun logout(view: View) {
-        mAuth!!.signOut()
+        FireBaseService.signOut()
         startActivity(Intent(this, LoginActivity::class.java))
     }
 

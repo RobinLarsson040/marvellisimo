@@ -1,4 +1,4 @@
 package com.example.marvelzomg.models
 
-
-data class CharacterDataWrapper()
+data class User(val email: String) {
+}
