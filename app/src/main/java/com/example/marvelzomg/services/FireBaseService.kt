@@ -50,6 +50,7 @@ class FireBaseService {
                     if (task.isSuccessful) {
                         currentUser = auth.currentUser
                         usersRef = database.child("users").child(currentUser!!.uid)
+                        toggleOnline(true)
                         val intent = Intent(context, HomeActivity::class.java)
                         context.startActivity(intent)
                     } else {
