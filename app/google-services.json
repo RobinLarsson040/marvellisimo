@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "666843273315",
+    "firebase_url": "https://marvelzomg.firebaseio.com",
+    "project_id": "marvelzomg",
+    "storage_bucket": "marvelzomg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666843273315:android:91616845abca638c",
+        "android_client_info": {
+          "package_name": "com.example.marvelzomg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666843273315-6c79kjv05abe37lhr5tdpgtmq1r5es0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marvelzomg",
+            "certificate_hash": "19801aa2f9d1a9f60335de431ed2371eb6f3d99b"
+          }
+        },
+        {
+          "client_id": "666843273315-okfe8jqm30e6u3ai59mn8kddo5oa7m52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB47HsuukBHmIi2cPbc4ALXlMvy1mRmXJU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666843273315-okfe8jqm30e6u3ai59mn8kddo5oa7m52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
