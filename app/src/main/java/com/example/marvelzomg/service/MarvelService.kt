@@ -12,9 +12,17 @@ interface MarvelService {
     fun getAllCharacters()
 
     @GET
-    fun getAllCharactersByName(@Query("limit") limit: Int, @Query("offset") offset: Int) : Observable<CharacterDataWrapper>
+    fun getAllCharactersByName(@Query("nameStartsWith") nameStartsWith: String, @Query("limit") limit: Int,
+                             @Query("offset") offset: Int): Observable<CharacterDataWrapper>
 
     @GET("character/{id}")
     fun getCharacterById(@Path("id") id: Int)
+
+    @GET("comics")
+    fun getAllComics()
+
+    @GET("comics")
+    fun getAllComicsByName(@Query("nameStartsWith") nameStartsWith: String, @Query("limit") limit: Int,
+                           @Query("offset") offset: Int)
 
 }
