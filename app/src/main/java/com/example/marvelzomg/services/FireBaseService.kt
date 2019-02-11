@@ -2,7 +2,6 @@ package com.example.marvelzomg.services
 
 import android.content.Context
 import android.content.Intent
-import android.view.View
 import android.widget.Toast
 import com.example.marvelzomg.activities.HomeActivity
 import com.example.marvelzomg.models.User

@@ -1,17 +1,13 @@
 package com.example.marvelzomg.activities
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import android.content.Intent
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import com.example.marvelzomg.R
 import com.example.marvelzomg.services.FireBaseService
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 
 class LoginActivity : AppCompatActivity() {
@@ -27,8 +23,9 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.input_password)
     }
 
-    public override fun onStart() {
-        super.onStart()
+    override fun onDestroy() {
+        super.onDestroy()
+        FireBaseService.toggleOnline(false)
     }
 
     fun login(view: View) {
