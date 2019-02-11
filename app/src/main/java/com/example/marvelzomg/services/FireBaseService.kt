@@ -2,7 +2,6 @@ package com.example.marvelzomg.services
 
 import android.content.Context
 import android.content.Intent
-import android.view.View
 import android.widget.Toast
 import com.example.marvelzomg.activities.HomeActivity
 import com.example.marvelzomg.models.User
@@ -50,6 +49,7 @@ class FireBaseService {
                     if (task.isSuccessful) {
                         currentUser = auth.currentUser
                         usersRef = database.child("users").child(currentUser!!.uid)
+                        toggleOnline(true)
                         val intent = Intent(context, HomeActivity::class.java)
                         context.startActivity(intent)
                     } else {

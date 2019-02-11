@@ -1,14 +1,13 @@
 package com.example.marvelzomg.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import com.example.marvelzomg.R
 import com.example.marvelzomg.services.FireBaseService
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 
 class HomeActivity : AppCompatActivity() {
