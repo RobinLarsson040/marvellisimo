@@ -41,5 +41,9 @@ class HomeActivity : AppCompatActivity() {
         startActivity(Intent(this, LoginActivity::class.java))
     }
 
+    fun jonasTest(view: View){
+        startActivity(Intent(this, CharacterListActivity::class.java))
+    }
+
 
 }
