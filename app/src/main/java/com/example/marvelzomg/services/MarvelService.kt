@@ -15,8 +15,7 @@ interface MarvelService {
 
     @GET("characters")
     fun getAllCharactersByName(
-        @Query("nameStartsWith") nameStartsWith: String, @Query("limit") limit: Int,
-        @Query("offset") offset: Int
+        @Query("nameStartsWith") nameStartsWith: String
     ): Single<CharacterDataWrapper>
 
     @GET("characters/{id}")
