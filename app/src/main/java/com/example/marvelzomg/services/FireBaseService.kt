@@ -88,14 +88,15 @@ class FireBaseService {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     println("USERS ONLINE STATUS CHANGED")
-                    users = snapshot.children.mapNotNullTo(users) {
-                        it.getValue<User>(User::class.java)
+                    users.clear()
+
+                    for (postSnapshot in snapshot.children) {
+                        users.add(postSnapshot.getValue<User>(User::class.java)!!)
                     }
-                    println(users.toString())
-                    println("SIZE FROM FIREBASE-SERVICE: " + users.size)
+                    adapter.notifyDataSetChanged()
                 }
             })
-            adapter.notifyDataSetChanged()
+
         }
     }
 }

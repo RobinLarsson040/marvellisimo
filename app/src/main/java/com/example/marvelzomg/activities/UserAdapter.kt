@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.marvelzomg.R
 import com.example.marvelzomg.models.User
 
-class UserAdapter(private val users: ArrayList<User>, val context: Context) : RecyclerView.Adapter<UserAdapter.Holder>() {
+class UserAdapter(var users: ArrayList<User>, var context: Context) : RecyclerView.Adapter<UserAdapter.Holder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.user_list_item, p0, false)
@@ -25,8 +25,8 @@ class UserAdapter(private val users: ArrayList<User>, val context: Context) : Re
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val email = itemView.findViewById<TextView>(R.id.userEmail)
-        val online = itemView.findViewById<TextView>(R.id.userOnline)
+        var email = itemView.findViewById<TextView>(R.id.userEmail)
+        var online = itemView.findViewById<TextView>(R.id.userOnline)
 
 
         fun bind(user: User, context: Context) {
