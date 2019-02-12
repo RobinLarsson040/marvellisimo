@@ -11,11 +11,11 @@ import retrofit2.http.Query
 interface MarvelService {
 
     @GET("characters")
-    fun getAllCharacters(): Single<CharacterDataWrapper>
+    fun getAllCharacters(@Query("offset") offset: Int): Single<CharacterDataWrapper>
 
     @GET("characters")
     fun getAllCharactersByName(
-        @Query("nameStartsWith") nameStartsWith: String
+        @Query("nameStartsWith") nameStartsWith: String, @Query("offset") offset: Int
     ): Single<CharacterDataWrapper>
 
     @GET("characters/{id}")
