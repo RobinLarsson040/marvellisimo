@@ -9,8 +9,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class FireBaseService {
 
@@ -79,6 +78,26 @@ class FireBaseService {
             auth.signOut()
         }
 
+        fun getOnlineUsers(): MutableList<User> {
+            var users: MutableList<User> = mutableListOf()
+
+            val ref = database.child("users")
+
+            ref.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    println("USERS ONLINE STATUS CHANGED")
+                    users = snapshot.children.mapNotNullTo(users) {
+                        it.getValue<User>(User::class.java)
+                    }
+                    println(users.toString())
+                    println("SIZE FROM FIREBASE-SERVICE: " + users.size)
+                }
+            })
+            return users
+        }
     }
 }
 

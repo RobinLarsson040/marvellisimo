@@ -1,4 +1,9 @@
 package com.example.marvelzomg.models
 
-data class User(val email: String) {
-}
+import com.google.firebase.database.PropertyName
+
+
+data class User(
+    @PropertyName("email") var email: String = "",
+    @PropertyName("online")var online: Boolean = false
+    )

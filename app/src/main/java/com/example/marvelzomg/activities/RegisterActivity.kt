@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    fun linkLogin() {
+    fun linkLogin(view: View) {
         startActivity(Intent(this, LoginActivity::class.java))
     }
 
