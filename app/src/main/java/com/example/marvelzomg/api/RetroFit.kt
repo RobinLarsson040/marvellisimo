@@ -1,8 +1,6 @@
 package com.example.marvelzomg.api
 
-import com.example.marvelzomg.models.CharacterDataWrapper
 import com.example.marvelzomg.services.MarvelService
-import io.reactivex.Single
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,16 +14,11 @@ object RetroFit {
 
     val service: MarvelService = Retrofit.Builder()
         .baseUrl(MARVEL_BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .client(getOkHttpClient())
+        .addConverterFactory(GsonConverterFactory.create())
+        //.client(getOkHttpClient())
         .build()
         .create(MarvelService::class.java)
-
-
-    fun characterRequest() : Single<CharacterDataWrapper> {
-        return service.getAllCharacters()
-    }
 
 }
 
