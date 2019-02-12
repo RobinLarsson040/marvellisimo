@@ -79,7 +79,7 @@ class FireBaseService {
         }
 
         fun getOnlineUsers(): MutableList<User> {
-            val users: MutableList<User> = mutableListOf()
+            var users: MutableList<User> = mutableListOf()
 
             val ref = database.child("users")
 
@@ -89,12 +89,11 @@ class FireBaseService {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     println("USERS ONLINE STATUS CHANGED")
-
-
-                    snapshot.children.mapNotNullTo(users) {
+                    users = snapshot.children.mapNotNullTo(users) {
                         it.getValue<User>(User::class.java)
                     }
                     println(users.toString())
+                    println("SIZE FROM FIREBASE-SERVICE: " + users.size)
                 }
             })
             return users

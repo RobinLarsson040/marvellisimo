@@ -1,20 +1,17 @@
 package com.example.marvelzomg.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.example.marvelzomg.R
 import com.example.marvelzomg.models.User
 import com.example.marvelzomg.services.FireBaseService
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_users.*
 
 class UsersActivity : AppCompatActivity() {
 
-    val disposable = CompositeDisposable()
 
     private var mAuth: FirebaseAuth? = null
     var users = arrayListOf<User>()
@@ -26,14 +23,12 @@ class UsersActivity : AppCompatActivity() {
 
         val adapter = UserAdapter(users, this)
         val layoutManager = LinearLayoutManager(this)
-
         rv_users_list.adapter = adapter
-        rv_users_list.layoutManager = layoutManager
+        rv_users_list.layoutManager = layoutManager as RecyclerView.LayoutManager?
 
         users = FireBaseService.getOnlineUsers() as ArrayList<User>
 
-
-
-        println(users.size)
+        println("SIZE FROM USERS-ACTIVITY: " + users.size)
+        adapter.notifyDataSetChanged()
     }
 }
