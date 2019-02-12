@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
 
         emailEditText = findViewById(R.id.input_email)
         passwordEditText = findViewById(R.id.input_password)
-        FireBaseService.getOnlineUsers()
     }
 
     override fun onDestroy() {

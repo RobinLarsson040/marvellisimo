@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.marvelzomg.activities.HomeActivity
+import com.example.marvelzomg.activities.UserAdapter
 import com.example.marvelzomg.models.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -78,9 +79,7 @@ class FireBaseService {
             auth.signOut()
         }
 
-        fun getOnlineUsers(): MutableList<User> {
-            var users: MutableList<User> = mutableListOf()
-
+        fun getOnlineUsers(users: ArrayList<User>, adapter: UserAdapter) {
             val ref = database.child("users")
 
             ref.addValueEventListener(object : ValueEventListener {
@@ -96,7 +95,7 @@ class FireBaseService {
                     println("SIZE FROM FIREBASE-SERVICE: " + users.size)
                 }
             })
-            return users
+            adapter.notifyDataSetChanged()
         }
     }
 }

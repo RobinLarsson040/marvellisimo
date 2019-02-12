@@ -16,19 +16,15 @@ class UsersActivity : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
     var users = arrayListOf<User>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_users)
-
-        val adapter = UserAdapter(users, this)
+        val adapter = UserAdapter(this.users, this)
         val layoutManager = LinearLayoutManager(this)
         rv_users_list.adapter = adapter
-        rv_users_list.layoutManager = layoutManager as RecyclerView.LayoutManager?
+        rv_users_list.layoutManager = layoutManager
 
-        users = FireBaseService.getOnlineUsers() as ArrayList<User>
+        FireBaseService.getOnlineUsers(users, adapter)
 
-        println("SIZE FROM USERS-ACTIVITY: " + users.size)
-        adapter.notifyDataSetChanged()
     }
 }
