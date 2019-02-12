@@ -78,23 +78,26 @@ class FireBaseService {
             auth.signOut()
         }
 
-        fun getOnlineUsers() {
+        fun getOnlineUsers(): MutableList<User> {
+            val users: MutableList<User> = mutableListOf()
 
             val ref = database.child("users")
 
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
+
                 override fun onDataChange(snapshot: DataSnapshot) {
                     println("USERS ONLINE STATUS CHANGED")
 
-                    var users: MutableList<User> = mutableListOf()
+
                     snapshot.children.mapNotNullTo(users) {
                         it.getValue<User>(User::class.java)
                     }
                     println(users.toString())
                 }
             })
+            return users
         }
     }
 }
