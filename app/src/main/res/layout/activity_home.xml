@@ -28,4 +28,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/logoutButton" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:onClick="logout"/>
+    <Button
+            android:text="JonasTest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/jonasButton" app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="jonasTest"
+            android:layout_marginBottom="44dp"/>
 </android.support.constraint.ConstraintLayout>
