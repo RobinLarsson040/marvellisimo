@@ -29,7 +29,7 @@ class CharacterListActivity : AppCompatActivity() {
 
 
 
-        disposable.add( RetroFit.service.getAllCharacters()
+        disposable.add(RetroFit.service.getAllCharacters()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { wrapper ->

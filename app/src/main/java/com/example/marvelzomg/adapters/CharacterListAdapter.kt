@@ -38,7 +38,7 @@ class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<Characte
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val characterName = itemView.findViewById<TextView>(R.id.charName)
+        val characterName = itemView.findViewById<TextView>(R.id.characterName)
         val characterImage = itemView.findViewById<ImageView>(R.id.characterImage)
 
 
@@ -47,10 +47,10 @@ class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<Characte
                 .into(characterImage)
             characterName?.text = character.name
 
-            /*itemView.setOnClickListener {
+            itemView.setOnClickListener {
                 val intent = Intent(character.id.toString(), null, context, SingleCharacter::class.java)
                 context.startActivity(intent)
-            }*/
+            }
         }
 
     }
