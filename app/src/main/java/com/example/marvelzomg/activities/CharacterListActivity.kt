@@ -5,13 +5,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.example.marvelzomg.R
 import com.example.marvelzomg.adapters.CharacterListAdapter
-import com.example.marvelzomg.api.ApiCalls
 import com.example.marvelzomg.api.RetroFit
-import com.example.marvelzomg.models.CharacterDataWrapper
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.character_list_view.*
 

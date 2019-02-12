@@ -1,6 +1,7 @@
 package com.example.marvelzomg.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.marvelzomg.R
+import com.example.marvelzomg.activities.SingleCharacter
 import com.example.marvelzomg.models.Character
-import com.example.marvelzomg.models.CharacterDataWrapper
 import com.squareup.picasso.Picasso
 
 class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<CharacterListAdapter.Holder>() {
@@ -31,17 +32,26 @@ class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<Characte
     override fun onBindViewHolder(p0: Holder, p1: Int) {
         p0.bind(characters[p1], context)
 
+
+
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val characterName = itemView.findViewById<TextView>(R.id.characterName)
+        val characterName = itemView.findViewById<TextView>(R.id.charName)
         val characterImage = itemView.findViewById<ImageView>(R.id.characterImage)
+
 
         fun bind(character: Character, context: Context) {
             Picasso.with(context).load(character.thumbnail.path + "." + character.thumbnail.extension)
                 .into(characterImage)
             characterName?.text = character.name
+
+            /*itemView.setOnClickListener {
+                val intent = Intent(character.id.toString(), null, context, SingleCharacter::class.java)
+                context.startActivity(intent)
+            }*/
         }
+
     }
 }
