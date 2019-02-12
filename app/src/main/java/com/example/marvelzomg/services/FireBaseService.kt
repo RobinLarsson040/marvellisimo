@@ -92,6 +92,7 @@ class FireBaseService {
                     snapshot.children.mapNotNullTo(users) {
                         it.getValue<User>(User::class.java)
                     }
+                    println(users.toString())
                 }
             })
         }
