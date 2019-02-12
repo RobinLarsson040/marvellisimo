@@ -19,7 +19,7 @@ class SingleCharacter : AppCompatActivity() {
 
 
         val characterObject: Character
-        val character = RetroFit.service.getCharacterById(intent.action!!.toInt()).cast(CharacterDataWrapper::class.java)
+      //  val character = RetroFit.service.getCharacterById(intent.action!!.toInt()).cast(CharacterDataWrapper::class.java)
        // character.
         //val resultChar =
 

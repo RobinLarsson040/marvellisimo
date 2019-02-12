@@ -16,7 +16,7 @@ object RetroFit {
         .baseUrl(MARVEL_BASE_URL)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
-        //.client(getOkHttpClient())
+        .client(getOkHttpClient())
         .build()
         .create(MarvelService::class.java)
 
