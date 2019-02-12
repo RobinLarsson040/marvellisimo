@@ -85,9 +85,9 @@ class FireBaseService {
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
-
                 override fun onDataChange(snapshot: DataSnapshot) {
                     println("USERS ONLINE STATUS CHANGED")
+
                     users.clear()
 
                     for (postSnapshot in snapshot.children) {
