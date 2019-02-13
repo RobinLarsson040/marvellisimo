@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import com.example.marvelzomg.R
 import com.example.marvelzomg.api.RetroFit
@@ -33,7 +32,6 @@ class SingleCharacter : AppCompatActivity() {
         setContentView(R.layout.activity_single_character)
 
         favoriteButton = findViewById(R.id.FavoriteButton)
-        val favoriteCharacters = FireBaseService.favoriteCharacters
 
         disposable.add(
             RetroFit.service.getCharacterById(intent.action!!.toInt()).subscribeOn(Schedulers.io()).observeOn(
@@ -65,17 +63,15 @@ class SingleCharacter : AppCompatActivity() {
         }
     }
 
-
     fun favorite(view: View) {
         val favoriteCharacters = FireBaseService.favoriteCharacters
         if (favoriteCharacters.contains(character)) {
             FireBaseService.removeFavorite(character!!.id, "Characters")
-            Toast.makeText(this, "Added Favorite :D", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Removed Favorite :D", Toast.LENGTH_SHORT).show()
         } else {
             FireBaseService.addFavorite(this.character!!, "Characters")
-            Toast.makeText(this, "Removed Favorite :|", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Added Favorite :|", Toast.LENGTH_SHORT).show()
         }
-        changeButtonStyle()
     }
 
     override fun onDestroy() {

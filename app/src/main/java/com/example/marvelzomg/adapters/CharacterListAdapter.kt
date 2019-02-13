@@ -1,5 +1,6 @@
 package com.example.marvelzomg.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -11,10 +12,10 @@ import android.widget.TextView
 import com.example.marvelzomg.R
 import com.example.marvelzomg.activities.SingleCharacter
 import com.example.marvelzomg.models.Character
+import com.example.marvelzomg.services.FireBaseService
 import com.squareup.picasso.Picasso
 
 class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<CharacterListAdapter.Holder>() {
-
 
     var characters = mutableListOf<Character>()
 
@@ -34,16 +35,21 @@ class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<Characte
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+
         val characterName = itemView.findViewById<TextView>(R.id.characterName)
         val characterImage = itemView.findViewById<ImageView>(R.id.characterImage)
+        val favoriteText = itemView.findViewById<TextView>(R.id.favoriteText)
 
 
+        @SuppressLint("SetTextI18n")
         fun bind(character: Character, context: Context) {
             Picasso.with(context).load(character.thumbnail!!.path + "." + character.thumbnail.extension)
                 .into(characterImage)
             characterName?.text = character.name
 
-
+            if (FireBaseService.favoriteCharacters.contains(character)) {
+                favoriteText.text = "FAVORITE"
+            }
 
             itemView.setOnClickListener {
                 val intent = Intent(character.id.toString(), null, context, SingleCharacter::class.java)
