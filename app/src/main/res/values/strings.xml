@@ -8,4 +8,9 @@
     <string name="character_image">Character image</string>
     <string name="search_with_character_name">Character name</string>
     <string name="search">Search</string>
+    <string name="series">Series</string>
+    <string name="searchSeriesName">Search series name</string>
+    <string name="search_with_series_name">Search with series name</string>
+    <string name="series_name">Series name</string>
+    <string name="series_description">Description</string>
 </resources>
