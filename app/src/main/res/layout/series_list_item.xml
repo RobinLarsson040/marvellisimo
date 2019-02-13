@@ -5,12 +5,10 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="166dp">
 
-
-
     <ImageView
             android:layout_width="0dp"
             android:layout_height="150dp"
-            android:id="@+id/characterImage"
+            android:id="@+id/seriesImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -18,14 +16,14 @@
             android:scaleType="centerCrop"/>
 
     <TextView
-            android:text="@string/character"
+            android:text="@string/series"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/characterName"
+            android:id="@+id/seriesName"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/colorAccent"

@@ -16,10 +16,9 @@ import com.squareup.picasso.Picasso
 class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<CharacterListAdapter.Holder>() {
 
 
-    var characters = listOf<Character>()
+    var characters = mutableListOf<Character>()
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): Holder {
-        println("ROFL")
         val view = LayoutInflater.from(context).inflate(R.layout.character_list_item, p0, false)
 
         return Holder(view)
