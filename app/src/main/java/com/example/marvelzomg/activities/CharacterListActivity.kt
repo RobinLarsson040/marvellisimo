@@ -27,7 +27,6 @@ class CharacterListActivity : AppCompatActivity() {
         characterListView.layoutManager = layoutManager
 
         findAllCharacters()
-
     }
 
     fun searchByName(view: View) {
@@ -42,7 +41,7 @@ class CharacterListActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { wrapper ->
-                    adapter.characters = wrapper.data.results
+                    adapter.characters = wrapper.data!!.results
                     adapter.notifyDataSetChanged()
                 })
         } else {
@@ -60,7 +59,7 @@ class CharacterListActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { wrapper ->
-                adapter.characters = wrapper.data.results
+                adapter.characters = wrapper.data!!.results
                 adapter.notifyDataSetChanged()
             })
     }

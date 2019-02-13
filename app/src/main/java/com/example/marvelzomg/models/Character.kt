@@ -5,8 +5,16 @@ import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class Character(val id: Int, val name: String, val description : String, val resourceURI: String, val urls : List<Url>, val thumbnail: Image,
-                     val comics: ComicList, val series: SeriesList) : Parcelable
+data class Character(
+    val id: Int = 0,
+    val name: String = "",
+    val description: String = "",
+    val resourceURI: String = "",
+    val urls: List<Url> = emptyList(),
+    val thumbnail: Image? = null,
+    val comics: ComicList? = null,
+    val series: SeriesList? = null
+) : Parcelable
 
 
 
