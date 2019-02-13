@@ -26,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
     public override fun onStart() {
         super.onStart()
+        FireBaseService.updateUserFavoriteCharacters()
         if (auth.currentUser != null) {
             usernameTextView!!.text = auth.currentUser!!.email
         } else {

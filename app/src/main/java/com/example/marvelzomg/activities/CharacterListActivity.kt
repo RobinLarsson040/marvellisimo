@@ -80,7 +80,7 @@ class CharacterListActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { wrapper ->
-                adapter.characters.addAll(wrapper.data.results)
+                wrapper.data!!.results?.let { adapter.characters.addAll(it) }
                 adapter.notifyDataSetChanged()
             })
     }
@@ -90,7 +90,7 @@ class CharacterListActivity : AppCompatActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { wrapper ->
-                adapter.characters.addAll(wrapper.data.results)
+                wrapper.data!!.results?.let { adapter.characters.addAll(it) }
                 adapter.notifyDataSetChanged()
             })
     }

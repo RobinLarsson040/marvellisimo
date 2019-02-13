@@ -39,9 +39,11 @@ class CharacterListAdapter(val context: Context) : RecyclerView.Adapter<Characte
 
 
         fun bind(character: Character, context: Context) {
-            Picasso.with(context).load(character.thumbnail.path + "." + character.thumbnail.extension)
+            Picasso.with(context).load(character.thumbnail!!.path + "." + character.thumbnail.extension)
                 .into(characterImage)
             characterName?.text = character.name
+
+
 
             itemView.setOnClickListener {
                 val intent = Intent(character.id.toString(), null, context, SingleCharacter::class.java)

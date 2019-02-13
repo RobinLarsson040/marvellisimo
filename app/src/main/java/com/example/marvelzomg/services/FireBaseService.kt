@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.marvelzomg.activities.HomeActivity
-import com.example.marvelzomg.activities.UserAdapter
+import com.example.marvelzomg.adapters.CharacterListAdapter
+import com.example.marvelzomg.adapters.UserAdapter
+import com.example.marvelzomg.models.Character
 import com.example.marvelzomg.models.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -19,6 +21,7 @@ class FireBaseService {
         private var auth: FirebaseAuth = FirebaseAuth.getInstance()
         private var currentUser: FirebaseUser? = null
         private lateinit var usersRef: DatabaseReference
+        var favoriteCharacters = arrayListOf<Character>()
 
         fun createUser(email: String, password: String, context: Context) {
             auth.createUserWithEmailAndPassword(email, password)
@@ -58,10 +61,13 @@ class FireBaseService {
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-
                 }
         }
 
+        fun signOut() {
+            toggleOnline(false)
+            auth.signOut()
+        }
 
         private fun addUserDetails(email: String) {
             val user = User(email)
@@ -74,9 +80,12 @@ class FireBaseService {
                 usersRef.child("online").setValue(status)
         }
 
-        fun signOut() {
-            toggleOnline(false)
-            auth.signOut()
+        fun addFavorite(character: Character, type: String) {
+            usersRef.child("favorite$type/${character.id}").setValue(character)
+        }
+
+        fun removeFavorite(id: Int, type: String) {
+            usersRef.child("favorite$type/$id").removeValue()
         }
 
         fun getOnlineUsers(users: ArrayList<User>, adapter: UserAdapter) {
@@ -85,6 +94,7 @@ class FireBaseService {
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
+
                 override fun onDataChange(snapshot: DataSnapshot) {
                     println("USERS ONLINE STATUS CHANGED")
 
@@ -94,6 +104,36 @@ class FireBaseService {
                         users.add(postSnapshot.getValue<User>(User::class.java)!!)
                     }
                     adapter.notifyDataSetChanged()
+                }
+            })
+        }
+
+        fun updateUserFavoriteCharacters() {
+            usersRef.child("favoriteCharacters").addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    favoriteCharacters.clear()
+                    println("FETCH FAVORITE CHARACTERS")
+
+                    for (postSnapshot in snapshot.children) {
+                        favoriteCharacters.add(postSnapshot.getValue<Character>(Character::class.java)!!)
+                    }
+                }
+            })
+        }
+
+        fun getUserFavoriteSeries() {
+            usersRef.child("favoriteSeries").addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    println("USER favoriteSeries STATUS CHANGED")
+
+                    for (postSnapshot in snapshot.children) {
+                        println(postSnapshot.toString())
+                    }
                 }
             })
 
