@@ -3,6 +3,8 @@ package com.example.marvelzomg.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import com.example.marvelzomg.R
@@ -32,22 +34,35 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun onlineUsers(view: View) {
-        startActivity(Intent(this, UsersActivity::class.java))
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
     }
 
-    fun logout(view: View) {
-        FireBaseService.signOut()
-        startActivity(Intent(this, LoginActivity::class.java))
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val intent: Intent
+        when (item!!.itemId) {
+            R.id.action_character -> {
+                intent = Intent(this, CharacterListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_series -> {
+                intent = Intent(this, SeriesListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_users -> {
+                intent = Intent(this, UsersActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_logout -> {
+                FireBaseService.signOut()
+                intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return true
+
     }
-
-    fun jonasTest(view: View){
-        startActivity(Intent(this, CharacterListActivity::class.java))
-    }
-
-    fun jonasTest2(view: View){
-        startActivity(Intent(this, SeriesListActivity::class.java))
-    }
-
-
 }

@@ -1,15 +1,19 @@
 package com.example.marvelzomg.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import com.example.marvelzomg.R
 import com.example.marvelzomg.adapters.SeriesListAdapter
 import com.example.marvelzomg.api.RetroFit
+import com.example.marvelzomg.services.FireBaseService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -29,7 +33,7 @@ class SeriesListActivity : AppCompatActivity() {
 
         val searchSeriesName = findViewById<EditText>(R.id.searchSeriesName)
 
-        if(adapter.series.isEmpty()){
+        if (adapter.series.isEmpty()) {
             findAllSeries(0)
         }
 
@@ -41,16 +45,14 @@ class SeriesListActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                println("CHANGED YEAH")
                 adapter.series.clear()
                 adapter.notifyDataSetChanged()
-                if(!searchSeriesName!!.text.isEmpty()){
+                if (!searchSeriesName!!.text.isEmpty()) {
                     findAllSeriesByName(searchSeriesName.text.toString(), adapter.series.size)
-                }else{
+                } else {
                     findAllSeries(0)
                 }
             }
-
         })
 
         seriesListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -65,8 +67,6 @@ class SeriesListActivity : AppCompatActivity() {
                 }
             }
         })
-
-
     }
 
     override fun onDestroy() {
@@ -94,6 +94,38 @@ class SeriesListActivity : AppCompatActivity() {
                     adapter.series.addAll(wrapper.data.results)
                     adapter.notifyDataSetChanged()
                 })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val intent: Intent
+        when (item!!.itemId) {
+            R.id.action_character -> {
+                intent = Intent(this, CharacterListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_series -> {
+                intent = Intent(this, SeriesListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_users -> {
+                intent = Intent(this, UsersActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_logout -> {
+                FireBaseService.signOut()
+                intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return true
+
     }
 
 }

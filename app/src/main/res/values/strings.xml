@@ -13,4 +13,7 @@
     <string name="search_with_series_name">Search with series name</string>
     <string name="series_name">Series name</string>
     <string name="series_description">Description</string>
+    <string name="menu">Menu</string>
+    <string name="users">Users</string>
+    <string name="logout">Logout</string>
 </resources>
