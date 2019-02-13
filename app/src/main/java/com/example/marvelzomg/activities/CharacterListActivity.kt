@@ -50,7 +50,7 @@ class CharacterListActivity : AppCompatActivity() {
                 adapter.characters.clear()
                 adapter.notifyDataSetChanged()
                 if(!searchText!!.text.isEmpty()){
-                    findAllCharactersByName(searchText.text.toString(), adapter.characters.size)
+                    findAllCharactersByName(searchText.text.toString(), 0)
                 }else{
                     findAllCharacters(0)
                 }

@@ -34,7 +34,7 @@ private fun getOkHttpClient(): OkHttpClient {
 
 fun addKeyAndHash(): Interceptor = Interceptor { chain ->
     val params =
-        mapOf("apikey" to "490e9405e90d6cdf7f823da1d81c7972", "hash" to "52e42a722bdb19550e304cd646af3fbc", "ts" to "1")
+        mapOf("apikey" to "289e785710fa2e9154b3b7d3dbe99ef0", "hash" to "d73b3bf5b9096f88c3f7b9970d45164d", "ts" to "1")
     val originalRequest = chain.request()
     val urlWithParams = originalRequest.url().newBuilder()
         .apply { params.forEach { addQueryParameter(it.key, it.value) } }
