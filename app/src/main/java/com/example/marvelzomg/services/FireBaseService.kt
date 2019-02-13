@@ -109,7 +109,10 @@ class FireBaseService {
         }
 
         fun getFavoriteCharacters(characters: ArrayList<Character>, adapter: FavoriteCharactersAdapter) {
-            val ref = database.child("favoriteCharacters")
+            val ref = database.child("users").child(currentUser!!.uid).child("favoriteCharacters")
+
+            println(ref.toString())
+            println(currentUser!!.uid)
 
             ref.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
