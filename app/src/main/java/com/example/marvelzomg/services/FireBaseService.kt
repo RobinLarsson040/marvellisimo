@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.marvelzomg.activities.HomeActivity
-import com.example.marvelzomg.activities.SingleCharacter
-import com.example.marvelzomg.adapters.CharacterListAdapter
 import com.example.marvelzomg.adapters.UserAdapter
 import com.example.marvelzomg.models.Character
 import com.example.marvelzomg.models.User
@@ -113,6 +111,7 @@ class FireBaseService {
             usersRef.child("favoriteCharacters").addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
                 }
+
                 override fun onDataChange(snapshot: DataSnapshot) {
                     favoriteCharacters.clear()
                     println("FETCH FAVORITE CHARACTERS")

@@ -3,7 +3,6 @@ package com.example.marvelzomg.services
 import com.example.marvelzomg.models.CharacterDataWrapper
 import com.example.marvelzomg.models.ComicDataWrapper
 import com.example.marvelzomg.models.SeriesDataWrapper
-import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

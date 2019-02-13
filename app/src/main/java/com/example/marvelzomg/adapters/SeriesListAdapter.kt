@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.marvelzomg.R
-import com.example.marvelzomg.activities.SingleCharacter
 import com.example.marvelzomg.activities.SingleSeries
 import com.example.marvelzomg.models.Series
 import com.squareup.picasso.Picasso

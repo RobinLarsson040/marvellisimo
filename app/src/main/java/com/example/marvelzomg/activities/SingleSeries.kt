@@ -1,8 +1,8 @@
 package com.example.marvelzomg.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.example.marvelzomg.R
@@ -12,7 +12,6 @@ import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_single_character.*
 import kotlinx.android.synthetic.main.activity_single_series.*
 
 class SingleSeries : AppCompatActivity() {

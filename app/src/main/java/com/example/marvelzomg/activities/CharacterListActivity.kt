@@ -1,15 +1,14 @@
 package com.example.marvelzomg.activities
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.EditText
 import com.example.marvelzomg.R
 import com.example.marvelzomg.adapters.CharacterListAdapter
@@ -36,11 +35,11 @@ class CharacterListActivity : AppCompatActivity() {
 
         val searchText = findViewById<EditText>(R.id.searchCharacterName)
 
-        if(adapter.characters.isEmpty()){
+        if (adapter.characters.isEmpty()) {
             findAllCharacters(0)
         }
 
-        searchText.addTextChangedListener(object : TextWatcher{
+        searchText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -50,9 +49,9 @@ class CharacterListActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 adapter.characters.clear()
                 adapter.notifyDataSetChanged()
-                if(!searchText!!.text.isEmpty()){
+                if (!searchText!!.text.isEmpty()) {
                     findAllCharactersByName(searchText.text.toString(), 0)
-                }else{
+                } else {
                     findAllCharacters(0)
                 }
             }

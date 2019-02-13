@@ -1,13 +1,12 @@
 package com.example.marvelzomg.activities
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText
 
-
-import android.widget.Toast
 import android.content.Intent
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import com.example.marvelzomg.R
 import com.example.marvelzomg.services.FireBaseService
 
