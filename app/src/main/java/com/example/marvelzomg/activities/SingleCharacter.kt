@@ -24,14 +24,12 @@ class SingleCharacter : AppCompatActivity() {
     val disposable = CompositeDisposable()
     var favoriteButton: Button? = null
     var character: Character? = null
-
+    val favoriteCharacters = FireBaseService.favoriteCharacters
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_character)
-
-        favoriteButton = findViewById(R.id.FavoriteButton)
 
         disposable.add(
             RetroFit.service.getCharacterById(intent.action!!.toInt()).subscribeOn(Schedulers.io()).observeOn(
@@ -47,24 +45,12 @@ class SingleCharacter : AppCompatActivity() {
                         Picasso.with(this)
                             .load(character.data.results[0].thumbnail!!.path + "." + character.data.results[0].thumbnail!!.extension)
                             .into(singleImage)
-                        changeButtonStyle()
                     }
                 }
             })
     }
 
-    @SuppressLint("SetTextI18n")
-    fun changeButtonStyle() {
-        val favoriteCharacters = FireBaseService.favoriteCharacters
-        if (favoriteCharacters.contains(character)) {
-            favoriteButton!!.text = "REMOVE FAVORITE"
-        } else {
-            favoriteButton!!.text = "ADD FAVORITE"
-        }
-    }
-
     fun favorite(view: View) {
-        val favoriteCharacters = FireBaseService.favoriteCharacters
         if (favoriteCharacters.contains(character)) {
             FireBaseService.removeFavorite(character!!.id, "Characters")
             Toast.makeText(this, "Removed Favorite :D", Toast.LENGTH_SHORT).show()
@@ -88,6 +74,10 @@ class SingleCharacter : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val intent: Intent
         when (item!!.itemId) {
+            R.id.action_favorites -> {
+                intent = Intent(this, HomeActivity::class.java)
+                this.startActivity(intent)
+            }
             R.id.action_character -> {
                 intent = Intent(this, CharacterListActivity::class.java)
                 this.startActivity(intent)

@@ -39,6 +39,10 @@ class UsersActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val intent: Intent
         when (item!!.itemId) {
+            R.id.action_favorites -> {
+                intent = Intent(this, HomeActivity::class.java)
+                this.startActivity(intent)
+            }
             R.id.action_character -> {
                 intent = Intent(this, CharacterListActivity::class.java)
                 this.startActivity(intent)

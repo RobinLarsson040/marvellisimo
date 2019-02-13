@@ -7,6 +7,9 @@
             android:title="@string/menu"
             app:showAsAction="always" />
     <item
+            android:id="@+id/action_favorites"
+            android:title="@string/favorite" />
+    <item
             android:id="@+id/action_character"
             android:title="@string/character" />
     <item
