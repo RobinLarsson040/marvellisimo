@@ -3,22 +3,37 @@ package com.example.marvelzomg.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import com.example.marvelzomg.R
+import com.example.marvelzomg.adapters.FavoriteCharactersAdapter
+import com.example.marvelzomg.adapters.UserAdapter
+import com.example.marvelzomg.models.Character
+import com.example.marvelzomg.models.User
 import com.example.marvelzomg.services.FireBaseService
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_users.*
 
 
 class HomeActivity : AppCompatActivity() {
 
     private var usernameTextView: TextView? = null
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    var characters = arrayListOf<Character>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val adapter = FavoriteCharactersAdapter(characters, this)
+        val layoutManager = LinearLayoutManager(this)
+        rv_favorite_characters.adapter = adapter
+        rv_favorite_characters.layoutManager = layoutManager
+
+        FireBaseService.getFavoriteCharacters(characters, adapter)
 
         usernameTextView = findViewById(R.id.usernameTextView)
     }
