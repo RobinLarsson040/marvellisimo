@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.marvelzomg.activities.HomeActivity
+import com.example.marvelzomg.adapters.FavoriteCharactersAdapter
 import com.example.marvelzomg.adapters.UserAdapter
 import com.example.marvelzomg.models.Character
 import com.example.marvelzomg.models.User
@@ -107,6 +108,25 @@ class FireBaseService {
             })
         }
 
+        fun getFavoriteCharacters(characters: ArrayList<Character>, adapter: FavoriteCharactersAdapter) {
+            val ref = database.child("favoriteCharacters")
+
+            ref.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {
+                }
+
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    characters.clear()
+                    println("FAVORITE CHARACTERS")
+                    for (postSnapshot in snapshot.children) {
+                        println(postSnapshot.toString())
+                        characters.add(postSnapshot.getValue<Character>(Character::class.java)!!)
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+            })
+        }
+
         fun updateUserFavoriteCharacters() {
             usersRef.child("favoriteCharacters").addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
@@ -136,7 +156,6 @@ class FireBaseService {
                     }
                 }
             })
-
         }
     }
 }
