@@ -4,10 +4,10 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class CharacterDataContainer(
+data class SeriesDataContainer(
     val offset: Int,
     val limit: Int,
     val total: Int,
     val count: Int,
-    val results: MutableList<Character>
+    val results: MutableList<Series>
 ) : Parcelable
