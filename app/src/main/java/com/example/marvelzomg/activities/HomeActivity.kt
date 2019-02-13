@@ -8,15 +8,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import com.example.marvelzomg.R
-import com.example.marvelzomg.adapters.CharacterListAdapter
 import com.example.marvelzomg.adapters.FavoriteCharactersAdapter
-import com.example.marvelzomg.adapters.UserAdapter
 import com.example.marvelzomg.models.Character
-import com.example.marvelzomg.models.User
 import com.example.marvelzomg.services.FireBaseService
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_users.*
 
 
 class HomeActivity : AppCompatActivity() {
