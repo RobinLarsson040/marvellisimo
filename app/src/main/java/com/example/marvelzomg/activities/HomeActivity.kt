@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import com.example.marvelzomg.R
+import com.example.marvelzomg.adapters.CharacterListAdapter
 import com.example.marvelzomg.adapters.FavoriteCharactersAdapter
 import com.example.marvelzomg.adapters.UserAdapter
 import com.example.marvelzomg.models.Character
@@ -23,23 +24,24 @@ class HomeActivity : AppCompatActivity() {
     private var usernameTextView: TextView? = null
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     var characters = arrayListOf<Character>()
+    val adapter = FavoriteCharactersAdapter(characters, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val adapter = FavoriteCharactersAdapter(characters, this)
         val layoutManager = LinearLayoutManager(this)
         rv_favorite_characters.adapter = adapter
         rv_favorite_characters.layoutManager = layoutManager
 
-        FireBaseService.getFavoriteCharacters(characters, adapter)
+
 
         usernameTextView = findViewById(R.id.usernameTextView)
     }
 
     public override fun onStart() {
         super.onStart()
+        FireBaseService.getFavoriteCharacters(characters, adapter)
         FireBaseService.updateUserFavoriteCharacters()
         if (auth.currentUser != null) {
             usernameTextView!!.text = auth.currentUser!!.email
