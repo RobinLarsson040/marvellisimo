@@ -1,16 +1,20 @@
 package com.example.marvelzomg.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import com.example.marvelzomg.R
 import com.example.marvelzomg.adapters.CharacterListAdapter
 import com.example.marvelzomg.api.RetroFit
+import com.example.marvelzomg.services.FireBaseService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -93,6 +97,38 @@ class CharacterListActivity : AppCompatActivity() {
                 wrapper.data!!.results?.let { adapter.characters.addAll(it) }
                 adapter.notifyDataSetChanged()
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val intent: Intent
+        when (item!!.itemId) {
+            R.id.action_character -> {
+                intent = Intent(this, CharacterListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_series -> {
+                intent = Intent(this, SeriesListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_users -> {
+                intent = Intent(this, UsersActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_logout -> {
+                FireBaseService.signOut()
+                intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return true
+
     }
 
 

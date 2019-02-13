@@ -34,31 +34,35 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun onlineUsers(view: View) {
-        startActivity(Intent(this, UsersActivity::class.java))
-    }
-
-    fun logout(view: View) {
-        FireBaseService.signOut()
-        startActivity(Intent(this, LoginActivity::class.java))
-    }
-
-    fun jonasTest(view: View){
-        startActivity(Intent(this, CharacterListActivity::class.java))
-    }
-
-    fun jonasTest2(view: View){
-        startActivity(Intent(this, SeriesListActivity::class.java))
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
         return true
     }
-    /*
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        s(item!!.itemId)
 
-    }*/
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val intent: Intent
+        when (item!!.itemId) {
+            R.id.action_character -> {
+                intent = Intent(this, CharacterListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_series -> {
+                intent = Intent(this, SeriesListActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_users -> {
+                intent = Intent(this, UsersActivity::class.java)
+                this.startActivity(intent)
+            }
+            R.id.action_logout -> {
+                FireBaseService.signOut()
+                intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return true
+
+    }
 }
