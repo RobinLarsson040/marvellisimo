@@ -29,7 +29,7 @@ class SeriesListActivity : AppCompatActivity() {
 
         val searchSeriesName = findViewById<EditText>(R.id.searchSeriesName)
 
-        if(adapter.series.isEmpty()){
+        if (adapter.series.isEmpty()) {
             findAllSeries(0)
         }
 
@@ -41,16 +41,14 @@ class SeriesListActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                println("CHANGED YEAH")
                 adapter.series.clear()
                 adapter.notifyDataSetChanged()
-                if(!searchSeriesName!!.text.isEmpty()){
+                if (!searchSeriesName!!.text.isEmpty()) {
                     findAllSeriesByName(searchSeriesName.text.toString(), adapter.series.size)
-                }else{
+                } else {
                     findAllSeries(0)
                 }
             }
-
         })
 
         seriesListView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -65,8 +63,6 @@ class SeriesListActivity : AppCompatActivity() {
                 }
             }
         })
-
-
     }
 
     override fun onDestroy() {

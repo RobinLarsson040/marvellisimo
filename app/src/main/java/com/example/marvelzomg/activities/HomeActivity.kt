@@ -3,6 +3,8 @@ package com.example.marvelzomg.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import com.example.marvelzomg.R
@@ -48,5 +50,14 @@ class HomeActivity : AppCompatActivity() {
         startActivity(Intent(this, SeriesListActivity::class.java))
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+    /*
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        s(item!!.itemId)
 
+    }*/
 }
