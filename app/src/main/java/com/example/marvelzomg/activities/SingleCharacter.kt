@@ -40,8 +40,8 @@ class SingleCharacter : AppCompatActivity() {
                     if (error != null) {
                         println("ERROR")
                     } else {
-                        this.character = character.data!!.results[0]
-                        charName.text = character.data.results[0].name
+                        this.character = character.data!!.results?.get(0)
+                        charName.text = character.data.results?.get(0)!!.name
                         singleDescription.text = character.data.results[0].description
                         Picasso.with(this)
                             .load(character.data.results[0].thumbnail!!.path + "." + character.data.results[0].thumbnail!!.extension)
