@@ -26,6 +26,7 @@ class CharacterListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.character_list_view)
 
+
         characterListView.adapter = adapter
         characterListView.layoutManager = layoutManager
 
