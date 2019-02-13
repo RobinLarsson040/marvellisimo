@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.example.marvelzomg.R
+import com.example.marvelzomg.adapters.UserAdapter
 import com.example.marvelzomg.models.User
 import com.example.marvelzomg.services.FireBaseService
 import com.google.firebase.auth.FirebaseAuth
