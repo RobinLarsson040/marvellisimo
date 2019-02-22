@@ -1,0 +1,40 @@
+*******************LOGIN ACTIVITY***********************
+
+-Login with no credentials
+1. Start the application
+2. Try to login without providing the credentials
+3. This should result in a Toast thath says "please fill in Credentials :|"
+
+-Login with a user thath doesn't exists
+1. Try to login with random credentials
+2. This should result in a Toast thath says  "Login failed"
+
+
+*******************REGISTER ACTIVITY***********************
+
+-Register a user with invalid credentials
+1. Try to register a user with invalid credentials
+2. This should result in a Toast thath says  "Register failed" + error message from firebase
+
+-Register a user thaht already exists
+1. Try to register a user thath already exists
+2. This should result in a Toast thath says  "user already exists"
+
+*******************HOME ACTIVITY***********************
+
+1. When you enter home activity you should see a list of all your favorite characters.
+
+-Click on one of the characters
+1. Click on one of the characters
+2. This should result in an intent thath open a detailed view of the character.
+
+*******************SINGLE CHARACTER ACTIVITY***********************
+-Add/Remove favorite
+1.Click on the "+/- favorite" button
+2.This should result in a Toast that says "Added Favorite"/"Removed Favorite"
+3.You can now go back to home screen to check thath the character is showing in the list
+
+*******************USERS ACTIVITY***********************
+1.You should see a list of existing users
+2. Online users should have property "True" in the list
+3. Offline users should have property "False" in the list
