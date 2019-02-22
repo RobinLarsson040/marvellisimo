@@ -1,0 +1,28 @@
+######Test for browsing Characters without a search criteria######
+1: Click on the Characters button in the menu.
+2: Leave the search field blank.
+3: Scroll through the characters, the characters should be listed in alphabetical order with characters with numbers as first letter in their names first.
+4: Once you've scrolled through at least 20 characters you should not see duplicates.
+
+######Test for browsing Characters with a search criteria######
+1: Click on the Characters button in the menu.
+2: Enter your search phrase in the input field (it searches by name).
+3: Make sure the characters match the search phrase.
+4: If there are less than 20 characters matching the search phrase you should not be able to scroll past that number, otherwise you should not see any duplicates past the first 20 characters.
+
+######Test for browsing Series without a search criteria######
+1: Click on the Series button in the menu.
+2: Leave the search field blank.
+3: Scroll through the series, the series should be listed in alphabetical order with the series with their name starting with a letter first.
+4: Scroll through at least 20 series. Once you've reached that number you should not see duplicates of the previous entries.
+
+######Test for browsing Series with a search criteria######
+1: Click on the Series button in the menu.
+2: Enter your prefered search phrase in the input field.
+3: Make sure the series name matches your search phrase.
+4: If there are less than 20 series matching the search phrase you should not be able to scroll past that number, otherwise you should not see any duplicates past the first 20 series.
+
+######Test for the menu######
+1: Make sure you are already logged in.
+2: Make sure you see the menu in the top right corner.
+3: Click on either of the buttons and make sure you are redirected to the proper view.
